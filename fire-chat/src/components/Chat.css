@@ -1,0 +1,23 @@
+.new-message-form {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  margin-top: 3rem;
+  gap: 1rem;
+
+  .sendBtn {
+    background-color: #c267f0;
+    box-shadow: 1px 1px 3px gray;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s;
+
+    &:hover {
+      background-color: #f9a826;
+      transform: translateY(-2px);
+    }
+  }
+}
