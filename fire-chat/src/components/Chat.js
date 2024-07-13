@@ -19,13 +19,14 @@ const Chat = (props) => {
 
   useEffect(() => {
     const queryMessages = query(messageRef, where("room", "==", room));
-    onSnapshot(queryMessages, (snapshot) => {
+    const unsubscribe = onSnapshot(queryMessages, (snapshot) => {
       let messages = [];
       snapshot.forEach((doc) => {
         messages.push({ ...doc.data(), id: doc.id });
       });
       setMessages(messages);
     });
+    return () => unsubscribe();
   }, []);
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -42,6 +43,9 @@ const Chat = (props) => {
   };
   return (
     <div className="chat-app">
+      <div className="header">
+        <h1>Welcome to: {room}</h1>
+      </div>
       <div>
         {messages.map((message) => (
           <h1>{message.text}</h1>
